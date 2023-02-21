@@ -33,7 +33,7 @@
     - [ ] Define an API that allows businesses to set offset (in hours) for first available slot.
     - [ ] Send email notification to business, after successful booking.
     - [ ] Send email notification to client (with link to modify / cancel), after successful booking.
-    - [ ] Email notification/ reminder to business / client, X time before the booked appointment.
+    - [ ] Send email notification/ reminder to business / client, X time before the booked appointment.
 
 ## 3. Client Management System
 
