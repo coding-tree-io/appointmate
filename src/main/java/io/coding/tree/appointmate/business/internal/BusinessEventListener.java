@@ -33,7 +33,7 @@ record BusinessEventListener(BusinessRepo businessRepo) {
                 new PhoneNumber("6947347556", "GR"),
                 Instancio.create(BusinessHours.class),
                 Set.of(johnDoe),
-                Set.of(new BusinessService("Test BusinessService", Instancio.create(Duration.class),
+                Set.of(new BusinessService("Test service", Instancio.create(Duration.class),
                     FastMoney.of(200.20, Currency.getInstance("USD").getCurrencyCode()), Set.of(johnDoe)))));
         log.warn("{}", businessRepo.findAll());
     }

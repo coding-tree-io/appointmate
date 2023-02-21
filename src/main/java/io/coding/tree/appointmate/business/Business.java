@@ -1,14 +1,12 @@
 package io.coding.tree.appointmate.business;
 
-import static org.springframework.util.Assert.hasText;
-import static org.springframework.util.Assert.notNull;
-
 import io.coding.tree.appointmate.common.PhoneNumber;
 import java.time.Instant;
 import java.util.Set;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 import org.springframework.data.annotation.CreatedDate;
@@ -23,6 +21,7 @@ import org.springframework.lang.Nullable;
 @ToString
 @EqualsAndHashCode
 @Getter(AccessLevel.NONE)
+@RequiredArgsConstructor
 public class Business {
 
     static final String COLLECTION_NAME = "businesses";
@@ -43,24 +42,6 @@ public class Business {
     @LastModifiedDate
     @Nullable
     private Instant updatedAt;
-
-    public Business(BusinessId businessId, String businessName, Industry industry, PhoneNumber phoneNumber,
-        BusinessHours businessHours, Set<Staff> staff, Set<BusinessService> businessServices) {
-        notNull(businessId, "Business ID must not be null");
-        hasText(businessName, "Business name must not be empty");
-        notNull(industry, "Business industry must not be null");
-        notNull(phoneNumber, "Business phone number must not be null");
-        notNull(businessHours, "Business hours must not be null");
-        notNull(staff, "Business staff must not be null");
-        notNull(businessServices, "Business businessServices must not be null");
-        this.businessId = businessId;
-        this.businessName = businessName;
-        this.industry = industry;
-        this.phoneNumber = phoneNumber;
-        this.businessHours = businessHours;
-        this.staff = staff;
-        this.businessServices = businessServices;
-    }
 
     public static Business withRandomId(String businessName, Industry industry, PhoneNumber phoneNumber,
         BusinessHours businessHours, Set<Staff> staff, Set<BusinessService> businessServices) {
