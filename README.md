@@ -30,6 +30,10 @@
     - [ ] Define an API that allows businesses to block out time slots that they are unavailable.
     - [ ] Define an API that allows clients to browse and view the availability of the business's services.
     - [ ] Define an API that allows clients to book appointments at available time slots.
+    - [ ] Define an API that allows businesses to set offset (in hours) for first available slot.
+    - [ ] Send email notification to business, after successful booking.
+    - [ ] Send email notification to client (with link to modify / cancel), after successful booking.
+    - [ ] Email notification/ reminder to business / client, X time before the booked appointment.
 
 ## 3. Client Management System
 
