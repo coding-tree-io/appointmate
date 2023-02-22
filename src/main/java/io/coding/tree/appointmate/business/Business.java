@@ -34,7 +34,7 @@ public class Business {
     private final PhoneNumber phoneNumber;
     private final BusinessHours businessHours;
     private final Set<Staff> staff;
-    private final Set<BusinessService> businessServices;
+    private final Set<BusinessServiceOffering> businessServiceOfferings;
 
     @CreatedDate
     @Nullable
@@ -44,8 +44,8 @@ public class Business {
     private Instant updatedAt;
 
     public static Business withRandomId(String businessName, Industry industry, PhoneNumber phoneNumber,
-        BusinessHours businessHours, Set<Staff> staff, Set<BusinessService> businessServices) {
+        BusinessHours businessHours, Set<Staff> staff, Set<BusinessServiceOffering> businessServiceOfferings) {
         return new Business(BusinessId.withRandomUUID(), businessName, industry,
-            phoneNumber, businessHours, staff, businessServices);
+            phoneNumber, businessHours, staff, businessServiceOfferings);
     }
 }
