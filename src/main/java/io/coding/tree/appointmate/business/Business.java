@@ -2,8 +2,6 @@ package io.coding.tree.appointmate.business;
 
 import io.coding.tree.appointmate.common.AuditMetadata;
 import io.coding.tree.appointmate.common.PhoneNumber;
-import java.util.Set;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
@@ -13,10 +11,11 @@ import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.lang.Nullable;
+import java.util.Set;
 
 @Document(Business.COLLECTION_NAME)
 @Value
-@Getter(AccessLevel.NONE)
+@Getter
 @RequiredArgsConstructor(onConstructor_ = @PersistenceCreator)
 public final class Business {
 
