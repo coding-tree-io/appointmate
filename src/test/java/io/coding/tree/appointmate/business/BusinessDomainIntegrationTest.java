@@ -1,7 +1,8 @@
 package io.coding.tree.appointmate.business;
 
 import static io.restassured.module.mockmvc.RestAssuredMockMvc.given;
-import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 import io.coding.tree.appointmate.AppointMateApplication;
 import io.coding.tree.appointmate.WithMongoDBTestContainer;
@@ -15,9 +16,10 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpHeaders;
 
 @SpringBootTest(classes = AppointMateApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class BusinessDomainIntegrationTest extends WithMongoDBTestContainer {
+class BusinessDomainIntegrationTest implements WithMongoDBTestContainer {
 
     @Autowired
     private BusinessController businessController;
@@ -36,17 +38,18 @@ class BusinessDomainIntegrationTest extends WithMongoDBTestContainer {
         void aBusinessShouldBeAbleToRegisterUsingBasicDetails() {
 
             BusinessRegistrationRequest businessRegistrationRequest = new BusinessRegistrationRequest("My Business",
-                new Address("Canada", "Toronto", "King Street", "123", "M5V 1J5"),
-                new BusinessContactInformation("1234567890", "email@gmail.com"), Industry.FITNESS);
+                new Address("GR", "Toronto", "King Street", "123", "M5V 1J5"),
+                new BusinessContactInformation("+30 6976570363", "email@gmail.com"), Industry.FITNESS);
 
             given()
                 .body(businessRegistrationRequest)
+                .header(HttpHeaders.CONTENT_TYPE, APPLICATION_JSON_VALUE)
                 .when()
                 .post("/business/register")
                 .then()
                 .log().ifValidationFails()
                 .statusCode(201)
-                .body(containsString("businessId:"));
+                .body("id", notNullValue());
         }
     }
 

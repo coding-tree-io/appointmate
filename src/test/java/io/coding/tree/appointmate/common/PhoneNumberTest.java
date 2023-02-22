@@ -1,5 +1,8 @@
 package io.coding.tree.appointmate.common;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
+
 import am.ik.yavi.core.ConstraintViolationsException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -7,9 +10,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.catchThrowable;
 
 class PhoneNumberTest {
     private static final Logger log = LoggerFactory.getLogger(PhoneNumberTest.class);
@@ -21,7 +21,8 @@ class PhoneNumberTest {
         "+1 650-555-1212, US",
         "+44 20 7123 1234, GB",
         "+81 3-1234-5678, JP",
-        "+30 6944738220, GR"
+        "+30 6944738220, GR",
+        "+306944738220, GR"
     })
     void testValidPhoneNumber(String number, String region) {
         PhoneNumber phoneNumber = new PhoneNumber(number, region);

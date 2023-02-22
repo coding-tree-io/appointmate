@@ -8,9 +8,9 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 
 @Testcontainers
-public class WithMongoDBTestContainer {
+public interface WithMongoDBTestContainer {
     @Container
-    static MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:latest");
+    MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:latest");
 
     @DynamicPropertySource
     static void setProperties(DynamicPropertyRegistry registry) {
