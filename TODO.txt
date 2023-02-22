@@ -1,2 +1,3 @@
 - Statemachine for onboarding?
-- MongoDb migrations
+- MongoDB migrations
+- MongoDB transactions?
