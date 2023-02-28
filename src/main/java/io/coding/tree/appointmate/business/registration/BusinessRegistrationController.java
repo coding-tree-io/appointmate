@@ -1,7 +1,12 @@
-package io.coding.tree.appointmate.business;
+package io.coding.tree.appointmate.business.registration;
 
 import static org.springframework.http.HttpStatus.CREATED;
 
+import io.coding.tree.appointmate.business.Business;
+import io.coding.tree.appointmate.business.BusinessHours;
+import io.coding.tree.appointmate.business.BusinessId;
+import io.coding.tree.appointmate.business.BusinessRepo;
+import io.coding.tree.appointmate.business.Industry;
 import io.coding.tree.appointmate.common.PhoneNumber;
 import java.time.ZoneId;
 import java.util.Set;
@@ -14,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-public class BusinessController {
+public class BusinessRegistrationController {
 
     private final BusinessRepo businessRepository;
 
@@ -28,15 +33,11 @@ public class BusinessController {
         return business.getBusinessId();
     }
 
-    public record BusinessRegistrationRequest(String name, Address address,
+    record BusinessRegistrationRequest(String name, Address address,
                                               BusinessContactInformation contactInformation, Industry industry) {
-
-        public record Address(String country, String city, String Street, String streetNumber, String postalCode) {
-
+        record Address(String country, String city, String Street, String streetNumber, String postalCode) {
         }
-
-        public record BusinessContactInformation(String phoneNumber, String email) {
-
+        record BusinessContactInformation(String phoneNumber, String email) {
         }
     }
 }
