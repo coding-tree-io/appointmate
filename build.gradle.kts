@@ -6,7 +6,13 @@ plugins {
 
 group = "io.coding.tree.appointmate"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_17
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+        implementation.set(JvmImplementation.J9)
+    }
+}
 
 configurations {
     compileOnly {
@@ -20,6 +26,7 @@ repositories {
 
 extra["testcontainersVersion"] = "1.17.6"
 extra["springModulith"] = "0.3.0"
+extra["servletApiVersion"] = "3.1.0"
 
 object Versions {
     const val mapstruct = "1.5.3.Final"
@@ -33,13 +40,11 @@ object Versions {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-cache")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
-    implementation("org.springframework.boot:spring-boot-starter-mail")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-log4j2")
-    implementation("org.springframework.experimental:spring-modulith-starter-mongodb")
+    implementation("org.springframework.experimental:spring-modulith-starter-core:0.4.1")
     modules {
         module("org.springframework.boot:spring-boot-starter-logging") {
             replacedBy("org.springframework.boot:spring-boot-starter-log4j2",
@@ -51,7 +56,6 @@ dependencies {
     implementation("am.ik.yavi:yavi:${Versions.yavi}")
     implementation("com.googlecode.libphonenumber:libphonenumber:${Versions.googlePhoneNumber}")
     implementation("org.instancio:instancio-core:${Versions.instancio}")
-    implementation("net.datafaker:datafaker:${Versions.dataFaker}")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     compileOnly("org.projectlombok:lombok")
     runtimeOnly("org.springframework.experimental:spring-modulith-actuator")
@@ -61,7 +65,6 @@ dependencies {
     testImplementation("org.springframework.experimental:spring-modulith-starter-test")
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:mongodb")
-    testImplementation("net.javacrumbs.json-unit:json-unit-assertj:${Versions.jsonUnitAssertJ}")
     testImplementation("io.rest-assured:spring-mock-mvc:${Versions.restAssured}")
     testCompileOnly("org.projectlombok:lombok")
 }
