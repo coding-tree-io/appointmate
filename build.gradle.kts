@@ -26,13 +26,10 @@ repositories {
 
 extra["testcontainersVersion"] = "1.17.6"
 extra["springModulith"] = "0.3.0"
-extra["servletApiVersion"] = "3.1.0"
 
 object Versions {
     const val mapstruct = "1.5.3.Final"
     const val instancio = "2.10.0"
-    const val dataFaker = "1.8.0"
-    const val jsonUnitAssertJ = "2.36.1"
     const val vavr = "0.10.4"
     const val yavi = "0.12.1"
     const val restAssured = "5.3.0"

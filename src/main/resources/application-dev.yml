@@ -1,0 +1,7 @@
+logging:
+    level:
+        org:
+            springframework:
+                data:
+                    mongodb: debug
+        root: INFO

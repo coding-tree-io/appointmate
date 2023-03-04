@@ -1,0 +1,32 @@
+management:
+    endpoints:
+        web:
+            exposure:
+                include: health,applicationmodules
+server:
+    compression:
+        enabled: true
+    error:
+        whitelabel:
+            enabled: false
+    http2:
+        enabled: true
+    port: ${API_PORT:8081}
+    shutdown: graceful
+spring:
+    aop:
+        proxy-target-class: false
+    application:
+        name: name
+    data:
+        mongodb:
+            auto-index-creation: true
+            uri: mongodb://${DB_HOST:localhost}:${DB_PORT:27017}/${DB_NAME:appointmentDB}
+            uuid-representation: STANDARD
+    lifecycle:
+        timeout-per-shutdown-phase: 1m
+    main:
+        banner-mode: 'off'
+        lazy-initialization: false
+    profiles:
+        active: dev
