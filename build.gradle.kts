@@ -1,7 +1,7 @@
 plugins {
     java
     idea
-    id("org.springframework.boot") version "3.0.2"
+    id("org.springframework.boot") version "3.0.4"
     id("io.spring.dependency-management") version "1.1.0"
 }
 
@@ -34,7 +34,7 @@ object Versions {
     const val vavr = "0.10.4"
     const val yavi = "0.12.1"
     const val restAssured = "5.3.0"
-    const val googlePhoneNumber = "8.13.6"
+    const val googlePhoneNumber = "8.13.7"
 }
 
 dependencies {
@@ -42,13 +42,13 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-log4j2")
-    implementation("org.springframework.experimental:spring-modulith-starter-core:${property("springModulith")}")
     modules {
         module("org.springframework.boot:spring-boot-starter-logging") {
             replacedBy("org.springframework.boot:spring-boot-starter-log4j2",
                 "Use Log4j2 instead of Logback")
         }
     }
+    implementation("org.springframework.experimental:spring-modulith-starter-core:${property("springModulith")}")
     implementation("org.mapstruct:mapstruct:${Versions.mapstruct}")
     implementation("io.vavr:vavr:${Versions.vavr}")
     implementation("am.ik.yavi:yavi:${Versions.yavi}")
@@ -65,6 +65,7 @@ dependencies {
     testImplementation("org.testcontainers:mongodb")
     testImplementation("io.rest-assured:spring-mock-mvc:${Versions.restAssured}")
     testCompileOnly("org.projectlombok:lombok")
+    testAnnotationProcessor("org.projectlombok:lombok")
 }
 
 dependencyManagement {

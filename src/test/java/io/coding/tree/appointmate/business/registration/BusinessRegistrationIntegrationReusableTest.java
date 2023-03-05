@@ -25,7 +25,6 @@ class BusinessRegistrationIntegrationReusableTest implements WithMongoDBReusable
     @Autowired
     private BusinessRegistrationController businessRegistrationController;
 
-
     @BeforeEach
     void setUp() {
         RestAssuredMockMvc.standaloneSetup(businessRegistrationController);
@@ -53,5 +52,4 @@ class BusinessRegistrationIntegrationReusableTest implements WithMongoDBReusable
                 .body("id", notNullValue());
         }
     }
-
 }
