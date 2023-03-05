@@ -42,7 +42,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-log4j2")
-    implementation("org.springframework.experimental:spring-modulith-starter-core")
+    implementation("org.springframework.experimental:spring-modulith-starter-core:${property("springModulith")}")
     modules {
         module("org.springframework.boot:spring-boot-starter-logging") {
             replacedBy("org.springframework.boot:spring-boot-starter-log4j2",

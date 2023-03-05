@@ -5,7 +5,7 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 import io.coding.tree.appointmate.AppointMateApplication;
-import io.coding.tree.appointmate.WithMongoDBTestContainer;
+import io.coding.tree.appointmate.WithMongoDBReusableTestContainer;
 import io.coding.tree.appointmate.business.Industry;
 import io.coding.tree.appointmate.business.registration.BusinessRegistrationController.BusinessRegistrationRequest;
 import io.coding.tree.appointmate.business.registration.BusinessRegistrationController.BusinessRegistrationRequest.Address;
@@ -20,7 +20,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpHeaders;
 
 @SpringBootTest(classes = AppointMateApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class BusinessRegistrationIntegrationTest implements WithMongoDBTestContainer {
+class BusinessRegistrationIntegrationReusableTest implements WithMongoDBReusableTestContainer {
 
     @Autowired
     private BusinessRegistrationController businessRegistrationController;

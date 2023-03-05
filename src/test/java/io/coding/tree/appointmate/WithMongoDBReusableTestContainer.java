@@ -1,16 +1,19 @@
 package io.coding.tree.appointmate;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.MongoDBContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 
-@Testcontainers
-public interface WithMongoDBTestContainer {
-    @Container
-    MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:latest");
+public interface WithMongoDBReusableTestContainer {
+
+    MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:latest").withReuse(true);
+
+    @BeforeAll
+    static void startContainer() {
+        mongoDBContainer.start();
+    }
 
     @DynamicPropertySource
     static void setProperties(DynamicPropertyRegistry registry) {
