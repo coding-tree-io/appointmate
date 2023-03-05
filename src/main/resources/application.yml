@@ -30,3 +30,6 @@ spring:
         lazy-initialization: false
     profiles:
         active: dev
+    mvc:
+        problemdetails:
+            enabled: true

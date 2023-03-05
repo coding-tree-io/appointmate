@@ -1,5 +1,6 @@
 plugins {
     java
+    idea
     id("org.springframework.boot") version "3.0.2"
     id("io.spring.dependency-management") version "1.1.0"
 }
@@ -25,7 +26,7 @@ repositories {
 }
 
 extra["testcontainersVersion"] = "1.17.6"
-extra["springModulith"] = "0.3.0"
+extra["springModulith"] = "0.4.1"
 
 object Versions {
     const val mapstruct = "1.5.3.Final"
@@ -41,7 +42,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-log4j2")
-    implementation("org.springframework.experimental:spring-modulith-starter-core:0.4.1")
+    implementation("org.springframework.experimental:spring-modulith-starter-core")
     modules {
         module("org.springframework.boot:spring-boot-starter-logging") {
             replacedBy("org.springframework.boot:spring-boot-starter-log4j2",
