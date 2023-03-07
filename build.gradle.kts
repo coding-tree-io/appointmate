@@ -59,6 +59,7 @@ dependencies {
     runtimeOnly("org.springframework.experimental:spring-modulith-actuator")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor("org.projectlombok:lombok")
+    annotationProcessor("org.mapstruct:mapstruct-processor:${Versions.mapstruct}")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.experimental:spring-modulith-starter-test")
     testImplementation("org.testcontainers:junit-jupiter")
@@ -66,6 +67,7 @@ dependencies {
     testImplementation("io.rest-assured:spring-mock-mvc:${Versions.restAssured}")
     testCompileOnly("org.projectlombok:lombok")
     testAnnotationProcessor("org.projectlombok:lombok")
+//    testAnnotationProcessor("org.mapstruct:mapstruct-processor:${Versions.mapstruct}")
 }
 
 dependencyManagement {

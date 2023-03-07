@@ -1,21 +1,20 @@
 package io.coding.tree.appointmate.business;
 
 import io.coding.tree.appointmate.common.AuditMetadata;
+import io.coding.tree.appointmate.common.EmailAddress;
 import io.coding.tree.appointmate.common.PhoneNumber;
-import lombok.Getter;
+import java.util.Optional;
+import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceCreator;
 import org.springframework.data.annotation.Version;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.lang.Nullable;
-import java.util.Set;
 
 @Document(Business.COLLECTION_NAME)
 @Value
-@Getter
 @RequiredArgsConstructor(onConstructor_ = @PersistenceCreator)
 public final class Business {
 
@@ -24,11 +23,12 @@ public final class Business {
     @Version
     @Nullable
     private final Long version;
+
     @Id
+    @Nullable
     private final BusinessId businessId;
-    @Indexed(name = "businessName_index")
+    private final EmailAddress email;
     private final String businessName;
-    private final Industry industry;
     private final PhoneNumber phoneNumber;
     private final BusinessHours businessHours;
     private final Set<Staff> staff;
@@ -36,22 +36,7 @@ public final class Business {
 
     private final AuditMetadata auditMetadata;
 
-    private Business(BusinessId businessId, String businessName, Industry industry, PhoneNumber phoneNumber,
-        BusinessHours businessHours, Set<Staff> staff, Set<BusinessServiceOffering> serviceOfferings) {
-        this.version = null;
-        this.businessId = businessId;
-        this.businessName = businessName;
-        this.industry = industry;
-        this.phoneNumber = phoneNumber;
-        this.businessHours = businessHours;
-        this.staff = staff;
-        this.serviceOfferings = serviceOfferings;
-        this.auditMetadata = new AuditMetadata(null, null);
-    }
-
-    public static Business withRandomId(String businessName, Industry industry, PhoneNumber phoneNumber,
-        BusinessHours businessHours, Set<Staff> staff, Set<BusinessServiceOffering> serviceOfferings) {
-        return new Business(BusinessId.withRandomUUID(), businessName, industry,
-            phoneNumber, businessHours, staff, serviceOfferings);
+    public Optional<BusinessId> getBusinessId() {
+        return Optional.ofNullable(businessId);
     }
 }
